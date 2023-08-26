@@ -27,6 +27,7 @@ Route::group(['prefix' => '', 'middleware' => ['istudent'], 'namespace' => 'webs
 
   Route::get('/quiz_view', 'ExamController@quiz_view')->name('quiz');
   Route::get('/quiz_question/{id}', 'ExamController@quiz_question_option_view')->name('quiz_question');
+  Route::get('/user_quiz', 'ExamController@user_quiz')->name('user_quiz');
 
   // Route::get('/quiz_exam/{id}', 'ExamController@quiz_question_view')->name('quiz_question');
   // Route::Post('/quiz_question_store', 'ExamController@quiz_question_store')->name('quiz_question_store');

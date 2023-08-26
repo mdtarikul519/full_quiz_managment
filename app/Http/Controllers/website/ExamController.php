@@ -15,8 +15,35 @@ class ExamController extends Controller
      public function quiz_view()
      {
           $data = Quiz::get();
+     //   dd( $data); 
           return view('forntend.quiz', compact('data'));
      }
+
+   public function user_quiz(){
+
+      $uesr_yous_quiz =Quiz::with('')
+     // dd($uesr_yous_quiz);
+     // return view('forntend.quiz');
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
      public function quiz_question_option_view($id) 
      {

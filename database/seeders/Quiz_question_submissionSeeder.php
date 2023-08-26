@@ -117,7 +117,7 @@ class Quiz_question_submissionSeeder extends Seeder
         Quiz_question_submissions::create([
             'user_id' => '3',
             'quiz_id' => '2',
-            'question_id' =>'4',
+            'question_id' => '4',
             'option_id' => '14',
             'is_correct' => '1'
         ]);
@@ -149,7 +149,7 @@ class Quiz_question_submissionSeeder extends Seeder
         Quiz_question_submissions::create([
             'user_id' => '3',
             'quiz_id' => '2',
-            'question_id' =>'5',
+            'question_id' => '5',
             'option_id' => '18',
             'is_correct' => '0'
         ]);
@@ -182,7 +182,7 @@ class Quiz_question_submissionSeeder extends Seeder
         Quiz_question_submissions::create([
             'user_id' => '3',
             'quiz_id' => '2',
-            'question_id' =>'6',
+            'question_id' => '6',
             'option_id' => '22',
             'is_correct' => '0'
         ]);
@@ -201,14 +201,6 @@ class Quiz_question_submissionSeeder extends Seeder
             'is_correct' => '0'
         ]);
 
-
-
-
-
-
-
-
-
         Quiz_question_submissions::create([
             'user_id' => '4',
             'quiz_id' => '3',
@@ -219,7 +211,7 @@ class Quiz_question_submissionSeeder extends Seeder
         Quiz_question_submissions::create([
             'user_id' => '4',
             'quiz_id' => '3',
-            'question_id' =>'7',
+            'question_id' => '7',
             'option_id' => '26',
             'is_correct' => '0'
         ]);
@@ -245,33 +237,33 @@ class Quiz_question_submissionSeeder extends Seeder
 
 
 
-    Quiz_question_submissions::create([
-        'user_id' => '4',
-        'quiz_id' => '3',
-        'question_id' => '8',
-        'option_id' => '29',
-        'is_correct' => '1'
-    ]);
-    Quiz_question_submissions::create([
-        'user_id' => '4',
-        'quiz_id' => '3',
-        'question_id' =>'8',
-        'option_id' => '30',
-        'is_correct' => '1'
-    ]);
-    Quiz_question_submissions::create([
-        'user_id' => '4',
-        'quiz_id' => '3',
-        'question_id' => '8',
-        'option_id' => '31',
-        'is_correct' => '1'
-    ]);
-    Quiz_question_submissions::create([
-        'user_id' => '4',
-        'quiz_id' => '3',
-        'question_id' => '8',
-        'option_id' => '32',
-        'is_correct' => '1'
-    ]);
+        Quiz_question_submissions::create([
+            'user_id' => '4',
+            'quiz_id' => '3',
+            'question_id' => '8',
+            'option_id' => '29',
+            'is_correct' => '1'
+        ]);
+        Quiz_question_submissions::create([
+            'user_id' => '4',
+            'quiz_id' => '3',
+            'question_id' => '8',
+            'option_id' => '30',
+            'is_correct' => '1'
+        ]);
+        Quiz_question_submissions::create([
+            'user_id' => '4',
+            'quiz_id' => '3',
+            'question_id' => '8',
+            'option_id' => '31',
+            'is_correct' => '1'
+        ]);
+        Quiz_question_submissions::create([
+            'user_id' => '4',
+            'quiz_id' => '3',
+            'question_id' => '8',
+            'option_id' => '32',
+            'is_correct' => '1'
+        ]);
     }
 }
