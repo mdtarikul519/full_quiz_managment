@@ -25,9 +25,12 @@ Auth::routes();
 Route::group(['prefix' => '', 'middleware' => ['istudent'], 'namespace' => 'website'], function () {
   Route::get('/', 'WebsiteController@index');
 
-  Route::get('/quiz_view', 'ExamController@quiz_view')->name('quiz');
   Route::get('/quiz_question/{id}', 'ExamController@quiz_question_option_view')->name('quiz_question');
-  Route::get('/user_quiz', 'ExamController@user_quiz')->name('user_quiz');
+  Route::get('/all-qiiz', 'ExamController@all_qiiz')->name('all_qiiz');
+  Route::get('/user-wise-user/{id}', 'ExamController@user_oies_quiz')->name('quiz_user');
+  Route::get('/user-attend-quiz/{id}', 'ExamController@user_attend_quiz')->name('user_quiz');
+  Route::get('/quiz-question-option/{id}', 'ExamController@quiz_question_option')->name('user_quiz');
+
 
   // Route::get('/quiz_exam/{id}', 'ExamController@quiz_question_view')->name('quiz_question');
   // Route::Post('/quiz_question_store', 'ExamController@quiz_question_store')->name('quiz_question_store');

@@ -22,10 +22,28 @@ class Quiz_userSeeder extends Seeder
         ]);
 
         Quiz_user::create([ 
+            'user_id' => '2',
+            'quiz_id' => '2',
+            'mark' => '2',
+        ]);
+        Quiz_user::create([ 
+            'user_id' => '6',
+            'quiz_id' => '1',
+            'mark' => '2',
+        ]);
+
+        Quiz_user::create([ 
             'user_id' => '3',
             'quiz_id' => '2',
             'mark' => '2',
         ]);
+
+        Quiz_user::create([ 
+            'user_id' => '3',
+            'quiz_id' => '3',
+            'mark' => '2',
+        ]);
+
 
         Quiz_user::create([ 
             'user_id' => '4',
