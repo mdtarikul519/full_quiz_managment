@@ -26,7 +26,8 @@ class ExamController extends Controller
 
 
     public function user_oies_quiz($id){
-              $user_quiz = QuizUser::where('user_id', $id)->get();
+              $user_quiz = QuizUser::with('userdetails','userQuiz')
+              ->where('user_id', $id)->get();
               dd($user_quiz->toArray());
          //dd($quiz_user);
        

@@ -26,6 +26,8 @@ Route::group(['prefix' => '', 'middleware' => ['istudent'], 'namespace' => 'webs
   Route::get('/', 'WebsiteController@index');
 
   Route::get('/quiz_question/{id}', 'ExamController@quiz_question_option_view')->name('quiz_question');
+
+  //query practice 
   Route::get('/all-qiiz', 'ExamController@all_qiiz')->name('all_qiiz');
   Route::get('/user-wise-user/{id}', 'ExamController@user_oies_quiz')->name('quiz_user');
   Route::get('/user-attend-quiz/{id}', 'ExamController@user_attend_quiz')->name('user_quiz');
