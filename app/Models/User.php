@@ -48,4 +48,6 @@ class User extends Authenticatable
     public function userquiz(){
         return $this->hasMany(QuizUser::class, 'quiz_id');
     }
+
+   
 }

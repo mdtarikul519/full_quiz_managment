@@ -23,6 +23,12 @@ public function quizQuestionsOption()
     return  $this->hasMany(QuizQuestionsOptions::class, 'question_id');
 
 }
+
+public function correct_answer()
+{
+    return  $this->hasMany(QuizQuestionsOptions::class, 'question_id')->where('is_correct', 1);
+
+}
    
 }
  

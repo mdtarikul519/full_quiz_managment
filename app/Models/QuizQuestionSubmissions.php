@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class QuizQuestionSubmissions extends Model
 {
     use HasFactory;
+
+    // public function userQuestionSubmit(){
+    //     return $this->hasMany(User::class);
+    // }
 }

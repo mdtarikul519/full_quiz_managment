@@ -26,12 +26,16 @@ Route::group(['prefix' => '', 'middleware' => ['istudent'], 'namespace' => 'webs
   Route::get('/', 'WebsiteController@index');
 
   Route::get('/quiz_question/{id}', 'ExamController@quiz_question_option_view')->name('quiz_question');
-
+  Route::get('/qiiz', 'ExamController@qiiz')->name('qiiz');
   //query practice 
   Route::get('/all-qiiz', 'ExamController@all_qiiz')->name('all_qiiz');
   Route::get('/user-wise-user/{id}', 'ExamController@user_oies_quiz')->name('quiz_user');
   Route::get('/user-attend-quiz/{id}', 'ExamController@user_attend_quiz')->name('user_quiz');
   Route::get('/quiz-question-option/{id}', 'ExamController@quiz_question_option')->name('user_quiz');
+  Route::get('/quiz-question-correct-ans/{id}', 'ExamController@quiz_question_correct_ans')->name('user_quiz');
+  Route::get('/signal_question-total-submission/{id}', 'ExamController@question_total_submission')->name('user_quiz');
+  Route::get('/question-correct_ans/{id}', 'ExamController@question_correct_answer')->name('user_quiz');
+
 
 
   // Route::get('/quiz_exam/{id}', 'ExamController@quiz_question_view')->name('quiz_question');
