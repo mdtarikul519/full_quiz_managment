@@ -16,4 +16,15 @@ class QuizUser extends Model
     public function userQuiz(){
         return $this->hasOne(Quiz::class, 'id','user_id');
   }
+
+
+  public function quizQuestion(){
+      return $this->hasMany(QuizQuestions::class, 'quiz_id');
+   }
+
+   public function quizQuestionsOptionDetails()
+{
+    return  $this->hasMany(QuizQuestionsOptions::class, 'question_id');
+
+}
 }

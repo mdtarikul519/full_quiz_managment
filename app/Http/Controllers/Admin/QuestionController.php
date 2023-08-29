@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Question;
 use App\Models\Quiz;
 use App\Models\Quiz_questions;
+use App\Models\QuizQuestions;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -20,7 +21,7 @@ class QuestionController extends Controller
     public function store(request $request)
     {
 
-        $data = new Quiz_questions();
+        $data = new QuizQuestions();
         // dd(request()->all());
         $data->quiz_id = $request->quiz_id;
         $data->title = $request->title;
@@ -47,7 +48,7 @@ class QuestionController extends Controller
 
     public function view()
     {
-        $alldata = Quiz_questions::with('quiz_relation')->get();
+        $alldata = QuizQuestions::with('quiz_relation')->get();
         return view('admin.question.view', compact('alldata'));
     }
 

@@ -18,79 +18,158 @@ use Illuminate\Support\Facades\Auth;
 
 class ExamController extends Controller
 {
+
+
+     public function quiz()
+     {
+          $alldata = Quiz::get();
+          // dd($alldata->toArray());
+          return view('forntend.quiz',compact('alldata'));
+     }
      public function all_qiiz()
      {
           $data = Quiz::get();
-          dd( $data->toArray()); 
-       
+          dd($data->toArray());
      }
 
 
-    public function user_oies_quiz($id){
-              $user_quiz = QuizUser::with('userdetails','userQuiz')
-              ->where('user_id', $id)
-              ->get();
-              dd($user_quiz->toArray());
-         //dd($quiz_user);
-       
-    }
-                      
-   public function user_attend_quiz($id){
-
-      $uesr_yous_quiz = QuizUser::where('quiz_id', $id)->get();
-     //dd($uesr_yous_quiz->toArray());
-     //dd($uesr_yous_quiz->count());
-      //dd(User::all()->count()-$uesr_yous_quiz->count());
-     
-   }
-   public function quiz_question_option($id){
-     $quiz_question_option = Quiz::with('quizQuestions','quizQuestions.quizQuestionsOption')
-     ->where('id', $id)
-     ->get();
-
-     dd( $quiz_question_option->toArray());
-   }
-
-     public function quiz_question_correct_ans($quiz_id){
-             $quiz_question_ans =QuizQuestions::with('quizQuestionsOption','correct_answer')
-             ->where('quiz_id',$quiz_id)
-             ->get();
-             dd( $quiz_question_ans->toArray());
-   }
-
-
-   public function question_total_submission($id){
-            $total_question_submit = QuizQuestionSubmissions::where('question_id', $id)->get();
-            dd($total_question_submit->toArray());
-            
-   }
-
-   public function question_correct_answer($id){
-        $question_correct_answer = QuizQuestionSubmissions::where('user_id', $id)->get();
-   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-     public function quiz_question_option_view($id) 
+     public function user_oies_quiz($id)
      {
-          $alldata = Quiz_questions::where('quiz_id', $id)->with('question_option_relation')->get();
+          $user_quiz = QuizUser::with('userdetails', 'userQuiz')
+               ->where('user_id', $id)
+               ->get();
+          dd($user_quiz->toArray());
+          //dd($quiz_user);
+
+     }
+
+     public function user_attend_quiz($id)
+     {
+
+          $uesr_yous_quiz = QuizUser::where('quiz_id', $id)->get();
+          //dd($uesr_yous_quiz->toArray());
+          //dd($uesr_yous_quiz->count());
+          //dd(User::all()->count()-$uesr_yous_quiz->count());
+
+     }
+     public function quiz_question_option($id)
+     {
+          $quiz_question_option = Quiz::with('quizQuestions', 'quizQuestions.quizQuestionsOption')
+               ->where('id', $id)
+               ->get();
+
+          dd($quiz_question_option->toArray());
+     }
+
+     public function quiz_question_correct_ans($quiz_id)
+     {
+          $quiz_question_ans = QuizQuestions::with('quizQuestionsOption', 'correct_answer')
+               ->where('quiz_id', $quiz_id)
+               ->get();
+          dd($quiz_question_ans->toArray());
+     }
+
+
+     public function question_total_submission($id)
+     {
+          $total_question_submit = QuizQuestionSubmissions::where('question_id', $id)->get();
+          dd($total_question_submit->toArray());
+     }
+
+     function question_answer($id)
+     {
+          $correct_answer = QuizQuestionSubmissions::where('question_id', $id)->where('is_correct', 1)->get();
+          dd($correct_answer->toArray());
+          $incorrect_answer = QuizQuestionSubmissions::where('question_id', $id)->where('is_correct', 0)->get();
+          //dd($incorrect_answer->toArray());
+
+     }
+
+
+     public function quize_details($id)
+     {
+          $start = microtime(true);
+          $quizs = Quiz::join('quiz_questions', 'quiz_questions.quiz_id', '=', 'quizzes.id')
+               ->join('quiz_questions_options','quiz_questions_options.question_id','=','quiz_questions.id')
+               ->select([
+                    'quizzes.id',
+                    'quizzes.title',
+
+                    'quiz_questions.id as quiz_questions_id',
+                    'quiz_questions.title as quiz_questions_title',
+
+                    // 'quiz_questions_options.id as quiz_questions_options_id',
+                    // 'quiz_questions_options.title as quiz_questions_options_title', 
+
+               ])
+               ->where('quizzes.id', $id)
+               // ->groupBy('quizzes.id','quiz_questions.title','quiz_questions.id')
+               ->get();
+          // $quiz = Quiz::with('quizQuestions')->where('id',$id)->first();
+          foreach ($quizs as $quiz) {
+               $quiz->options = QuizQuestionsOptions::select(['question_id','title','is_correct'])->where('question_id',$quiz->quiz_questions_id)->get();
+           }
+
+          // $quizs = Quiz::where('id',$id)
+          //      ->with([
+          //           'quizQuestions'=>function($q){
+          //                return $q->with(['quizQuestionsOption']);
+          //           }
+          //      ])->first();
+          $time = microtime(true) - $start;
+          dd($quizs->toArray(), $time);
+
+          $quizeDetails = QuizUser::with([
+               'quizQuestion',
+               'quizQuestionsOptionDetails'
+          ])
+               ->where('user_id', $id)->get();
+          dd($quizeDetails->toArray());
+     }
+
+
+     public function quize_attends($id){
+          $quizNotAttend = QuizUser::where('quiz_id', $id)->count();
+
+          dd(User::all()->count() - $quizNotAttend);
+
+          dd($quizNotAttend->toArray());
+
+     }
+
+
+     public function total_quize_attends(){
+          $quizAttend = QuizQuestionSubmissions::get()->pluck('user_id')->toArray();
+           $allUser = User::get()->pluck('id')->toArray();
+           $result = array_diff($allUser, $quizAttend);
+           dd($quizAttend, $allUser, $result);
+          
+
+
+     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     public function quiz_question_option_view($id)
+     {
+          $alldata = QuizQuestions::where('quiz_id', $id)->with('question_option_relation')->get();
           // dd($alldata);
-          return view('forntend.quiz_question_option',compact('alldata'));
+          return view('forntend.quiz_question_option', compact('alldata'));
      }
 }

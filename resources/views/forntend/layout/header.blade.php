@@ -76,7 +76,7 @@
                                         <ul>
                                             @auth
 
-                                            <li><a href="{{ route('quiz') }}">Exam</a>
+                                            <li><a href="{{ route('quiz_view') }}">Exam</a> 
                                                     @guest
                                                         @if (Auth::has('login'))
                                                     <li><a href="{{ route('login') }}">login</a></li>

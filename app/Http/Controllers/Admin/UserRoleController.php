@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User_Role;
+use App\Models\UserRole;
 use Illuminate\Http\Request;
 
 class UserRoleController extends Controller
@@ -13,7 +14,7 @@ class UserRoleController extends Controller
     }
 
     public function store(Request $request){
-            $data = new User_Role();
+            $data = new UserRole();
 
             $data->title = $request->title;
             $data->save();
@@ -21,7 +22,7 @@ class UserRoleController extends Controller
     }
 
     public function view(){
-        $alldata = User_Role::all();
+        $alldata = UserRole::all();
 
     }
 }
