@@ -13,8 +13,10 @@ use App\Models\QuizQuestionsOptions;
 use App\Models\QuizQuestionSubmissions;
 use App\Models\QuizUser;
 use App\Models\User;
+use App\Models\UserRole;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ExamController extends Controller
 {
@@ -43,12 +45,21 @@ class ExamController extends Controller
 
      }
 
-     public function user_attend_quiz($id)
+     public function user_attend_quiz()
      {
 
-          $uesr_yous_quiz = QuizUser::where('quiz_id', $id)->get();
+          $mainQuery = QuizQuestionSubmissions::whereExists(function ($query) {
+               $query->select(DB::raw(1))
+                   ->from('user_roles')
+                   ->where('serial', 2)
+                   ->whereColumn('id', 'user_roles.id');
+           })
+           ->get();
+
+
+          //$uesr_yous_quiz = QuizQuestionSubmissions::select('user_id')->get();
           //dd($uesr_yous_quiz->toArray());
-          //dd($uesr_yous_quiz->count());
+           dd($mainQuery->toArray());
           //dd(User::all()->count()-$uesr_yous_quiz->count());
 
      }
@@ -56,7 +67,7 @@ class ExamController extends Controller
      {
           $quiz_question_option = Quiz::with('quizQuestions', 'quizQuestions.quizQuestionsOption')
                ->where('id', $id)
-               ->get();
+               ->first();
 
           dd($quiz_question_option->toArray());
      }
@@ -143,10 +154,33 @@ class ExamController extends Controller
            $allUser = User::get()->pluck('id')->toArray();
            $result = array_diff($allUser, $quizAttend);
            dd($quizAttend, $allUser, $result);
-          
-
-
      }
+
+
+     public function quiz_height_mark($id){
+           $height_mark = QuizUser::where('quiz_id',$id)->orderBy('mark', 'desc')->get();
+           dd($height_mark->toArray());
+     }
+
+
+     public function total_quiz_mark(){
+          $quizTotalMark = QuizQuestions::select('mark')->sum('mark');
+          dd( $quizTotalMark);
+     }
+
+     public function user_total_quiz_attend($id){
+             $userAttendTotalQuiz = QuizUser::where('user_id', $id)->get();
+
+             dd($userAttendTotalQuiz->toArray());
+     }
+
+
+     public function total_quiz_wise_leaderbox(){
+
+          $totalQuizWiseLeaderbox = QuizUser::orderBy('mark', 'desc')->get();
+
+          dd($totalQuizWiseLeaderbox->toArray());
+     } 
 
 
 
