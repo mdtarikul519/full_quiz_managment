@@ -24,33 +24,45 @@ Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// Route::group(['prefix' => '', 'middleware' => ['istudent'], 'namespace' => 'website'], function () {
+//     Route::get('/', 'WebsiteController@index');
+
+//     Route::get('/quiz_question/{id}', 'ExamController@quiz_question_option_view')->name('quiz_question');
+//     Route::get('/quizs', 'ExamController@quiz')->name('quiz_view');
+//     //query practice 
+//     Route::get('/all-qiiz', 'ExamController@all_qiiz')->name('all_qiiz');
+//     Route::get('/user-wise-user/{id}', 'ExamController@user_oies_quiz')->name('quiz_user');
+//     Route::get('/user-attend-quiz', 'ExamController@user_attend_quiz')->name('user_quiz');
+//     Route::get('/quiz-question-option/{id}', 'ExamController@quiz_question_option')->name('user_quiz');
+//     Route::get('/quiz-question-correct-ans/{id}', 'ExamController@quiz_question_correct_ans')->name('user_quiz');
+//     Route::get('/signal-question-total-submission/{id}', 'ExamController@question_total_submission')->name('user_quiz');
+//     Route::get('/question-answer/{id}', 'ExamController@question_answer')->name('user_quiz');
+//     Route::get('/quize-details/{id}', 'ExamController@quize_details')->name('user_quiz');
+//     Route::get('/quize-attends/{id}', 'ExamController@quize_attends')->name('user_quiz');
+//     Route::get('/total-user-attends', 'ExamController@total_quize_attends')->name('user_quiz');
+//     Route::get('/quiz-height-mark/{id}', 'ExamController@quiz_height_mark')->name('user_quiz');
+//     Route::get('/total-quiz-mark', 'ExamController@total_quiz_mark')->name('user_quiz');
+//     Route::get('/user-total-quiz-attend/{id}', 'ExamController@user_total_quiz_attend')->name('user_quiz');
+//     Route::get('/total-quiz-wise-leaderbox', 'ExamController@total_quiz_wise_leaderbox')->name('user_quiz');
+
+//     // Route::get('/quiz_exam/{id}', 'ExamController@quiz_question_view')->name('quiz_question');
+//     // Route::Post('/quiz_question_store', 'ExamController@quiz_question_store')->name('quiz_question_store');
+//     // Route::get('/quiz_answer_view/{quiz_id}', 'ExamController@quiz_answer_view')->name('quiz_answer_view');
+//     // Route::get('/exam_answer_view{id}', 'ExamController@exam_answer_view')->name('exam_answer_view');
+//     // Route::get('/profile', 'WebsiteController@profile')->name('profile');
+// });
+
+
 Route::group(['prefix' => '', 'middleware' => ['istudent'], 'namespace' => 'website'], function () {
     Route::get('/', 'WebsiteController@index');
 
-    Route::get('/quiz_question/{id}', 'ExamController@quiz_question_option_view')->name('quiz_question');
-    Route::get('/quizs', 'ExamController@quiz')->name('quiz_view');
-    //query practice 
-    Route::get('/all-qiiz', 'ExamController@all_qiiz')->name('all_qiiz');
-    Route::get('/user-wise-user/{id}', 'ExamController@user_oies_quiz')->name('quiz_user');
-    Route::get('/user-attend-quiz', 'ExamController@user_attend_quiz')->name('user_quiz');
-    Route::get('/quiz-question-option/{id}', 'ExamController@quiz_question_option')->name('user_quiz');
-    Route::get('/quiz-question-correct-ans/{id}', 'ExamController@quiz_question_correct_ans')->name('user_quiz');
-    Route::get('/signal-question-total-submission/{id}', 'ExamController@question_total_submission')->name('user_quiz');
-    Route::get('/question-answer/{id}', 'ExamController@question_answer')->name('user_quiz');
-    Route::get('/quize-details/{id}', 'ExamController@quize_details')->name('user_quiz');
-    Route::get('/quize-attends/{id}', 'ExamController@quize_attends')->name('user_quiz');
-    Route::get('/total-user-attends', 'ExamController@total_quize_attends')->name('user_quiz');
-    Route::get('/quiz-height-mark/{id}', 'ExamController@quiz_height_mark')->name('user_quiz');
-    Route::get('/total-quiz-mark', 'ExamController@total_quiz_mark')->name('user_quiz');
-    Route::get('/user-total-quiz-attend/{id}', 'ExamController@user_total_quiz_attend')->name('user_quiz');
-    Route::get('/total-quiz-wise-leaderbox', 'ExamController@total_quiz_wise_leaderbox')->name('user_quiz');
+    Route::get('/quizs', 'QuizController@quiz')->name('quizs');
+    Route::get('/quizs/question/{id}', 'QuizController@quiz_question')->name('quiz_question');
 
-    // Route::get('/quiz_exam/{id}', 'ExamController@quiz_question_view')->name('quiz_question');
-    // Route::Post('/quiz_question_store', 'ExamController@quiz_question_store')->name('quiz_question_store');
-    // Route::get('/quiz_answer_view/{quiz_id}', 'ExamController@quiz_answer_view')->name('quiz_answer_view');
-    // Route::get('/exam_answer_view{id}', 'ExamController@exam_answer_view')->name('exam_answer_view');
-    // Route::get('/profile', 'WebsiteController@profile')->name('profile');
+
+
 });
+
 
 ///admin
 Route::group(['prefix' => '', 'middleware' => ['isadmin'], 'namespace' => 'Admin'], function () {
