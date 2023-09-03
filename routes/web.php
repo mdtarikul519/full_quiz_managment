@@ -58,6 +58,8 @@ Route::group(['prefix' => '', 'middleware' => ['istudent'], 'namespace' => 'webs
 
     Route::get('/quizs', 'QuizController@quiz')->name('quizs');
     Route::get('/quizs/question/{id}', 'QuizController@quiz_question')->name('quiz_question');
+    Route::post('/quizs/question/submit', 'QuizController@quiz_question_submit')->name('quiz_question_submit');
+
 
 
 
