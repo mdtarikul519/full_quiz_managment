@@ -8,9 +8,10 @@
                     @foreach ($quizQuestions as $quizQuestion)
                        {{ $quizQuestion->id }}
                         <h1>{{ $quizQuestion->title }}</h1>
-                        @foreach ($quizQuestion->quizQuestionsOption as $options)
+                        <input type="text" hidden name="quiz_id" value="{{ $quizQuestion->quiz_id }}">
+                        @foreach ($quizQuestion->quizQuestionsOptions as $options)
                          {{ $options->id }}
-                            <input type="checkbox" name="title[{{ $quizQuestion->title }}][{{ $options->id }}][]" value="{{ $options->title }}">
+                            <input type="checkbox" name="title[{{ $quizQuestion->id }}][{{ $options->id }}][]" value="{{ $options->title }}">
                             <label for="vehicle1"> {{ $options->title }}</label><br>
                         @endforeach
                     @endforeach
