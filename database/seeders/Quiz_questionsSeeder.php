@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Quiz_questions;
+use App\Models\QuizQuestions;
 use Illuminate\Database\Seeder;
 
 class Quiz_questionsSeeder extends Seeder
@@ -14,20 +15,20 @@ class Quiz_questionsSeeder extends Seeder
      */
     public function run()
     {
-        Quiz_questions::truncate();
-        Quiz_questions::create([
+        QuizQuestions::truncate();
+        QuizQuestions::create([
             'quiz_id' => '1',
             'title' => 'Who is the father of c programing?',
             'mark' => '1'
         ]);
-        Quiz_questions::create([
+        QuizQuestions::create([
 
             'quiz_id' => '1',
             'title' => 'Which of the following are unary operators in C?',
             'mark' => '1'
         ]);
 
-        Quiz_questions::create([
+        QuizQuestions::create([
 
             'quiz_id' => '1',
             'title' => 'The keyword used to transfer control from a function back to the calling function is.',
@@ -39,19 +40,19 @@ class Quiz_questionsSeeder extends Seeder
 
 
 
-        Quiz_questions::create([
+        QuizQuestions::create([
 
             'quiz_id' => '2',
             'title' => 'Who is the father of php?',
             'mark' => '1'
         ]);
-        Quiz_questions::create([
+        QuizQuestions::create([
 
             'quiz_id' => '2',
             'title' => 'What are the popular frameworks in PHP ?',
             'mark' => '1'
         ]);
-        Quiz_questions::create([
+        QuizQuestions::create([
 
             'quiz_id' => '2',
             'title' => 'What are the different types of loop in PHP ',
@@ -61,14 +62,14 @@ class Quiz_questionsSeeder extends Seeder
 
 
 
-        Quiz_questions::create([
+        QuizQuestions::create([
 
             'quiz_id' => '3',
             'title' => 'Who is the father of java programing?',
             'mark' => '1'
         ]);
 
-        Quiz_questions::create([
+        QuizQuestions::create([
 
             'quiz_id' => '3',
             'title' => 'what is DML Commands are',

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Quiz_question_submissions;
+use App\Models\QuizQuestionSubmissions;
 use Illuminate\Database\Seeder;
 
 class Quiz_question_submissionSeeder extends Seeder
@@ -14,29 +15,29 @@ class Quiz_question_submissionSeeder extends Seeder
      */
     public function run()
     {
-        Quiz_question_submissions::truncate();
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::truncate();
+        QuizQuestionSubmissions::create([
             'user_id' => '2',
             'quiz_id' => '1',
             'question_id' => '1',
             'option_id' => '1',
             'is_correct' => '1'
         ]);
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '2',
             'quiz_id' => '1',
             'question_id' => '1',
             'option_id' => '2',
             'is_correct' => '0'
         ]);
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '2',
             'quiz_id' => '1',
             'question_id' => '1',
             'option_id' => '3',
             'is_correct' => '1'
         ]);
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '2',
             'quiz_id' => '1',
             'question_id' => '1',
@@ -44,28 +45,28 @@ class Quiz_question_submissionSeeder extends Seeder
             'is_correct' => '0'
         ]);
 
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '2',
             'quiz_id' => '1',
             'question_id' => '2',
             'option_id' => '5',
             'is_correct' => '1'
         ]);
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '2',
             'quiz_id' => '1',
             'question_id' => '2',
             'option_id' => '6',
             'is_correct' => '1'
         ]);
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '2',
             'quiz_id' => '1',
             'question_id' => '2',
             'option_id' => '7',
             'is_correct' => '0'
         ]);
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '2',
             'quiz_id' => '1',
             'question_id' => '2',
@@ -75,28 +76,28 @@ class Quiz_question_submissionSeeder extends Seeder
 
 
 
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '2',
             'quiz_id' => '1',
             'question_id' => '3',
             'option_id' => '9',
             'is_correct' => '1'
         ]);
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '2',
             'quiz_id' => '1',
             'question_id' => '3',
             'option_id' => '10',
             'is_correct' => '0'
         ]);
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '2',
             'quiz_id' => '1',
             'question_id' => '3',
             'option_id' => '11',
             'is_correct' => '1'
         ]);
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '2',
             'quiz_id' => '1',
             'question_id' => '3',
@@ -107,28 +108,28 @@ class Quiz_question_submissionSeeder extends Seeder
 
 
 
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '3',
             'quiz_id' => '2',
             'question_id' => '4',
             'option_id' => '13',
             'is_correct' => '0'
         ]);
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '3',
             'quiz_id' => '2',
             'question_id' => '4',
             'option_id' => '14',
             'is_correct' => '1'
         ]);
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '3',
             'quiz_id' => '2',
             'question_id' => '4',
             'option_id' => '15',
             'is_correct' => '0'
         ]);
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '3',
             'quiz_id' => '2',
             'question_id' => '4',
@@ -139,28 +140,28 @@ class Quiz_question_submissionSeeder extends Seeder
 
 
 
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '3',
             'quiz_id' => '2',
             'question_id' => '5',
             'option_id' => '17',
             'is_correct' => '1'
         ]);
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '3',
             'quiz_id' => '2',
             'question_id' => '5',
             'option_id' => '18',
             'is_correct' => '0'
         ]);
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '3',
             'quiz_id' => '2',
             'question_id' => '5',
             'option_id' => '19',
             'is_correct' => '0'
         ]);
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '3',
             'quiz_id' => '2',
             'question_id' => '5',
@@ -172,28 +173,28 @@ class Quiz_question_submissionSeeder extends Seeder
 
 
 
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '3',
             'quiz_id' => '2',
             'question_id' => '6',
             'option_id' => '21',
             'is_correct' => '0'
         ]);
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '3',
             'quiz_id' => '2',
             'question_id' => '6',
             'option_id' => '22',
             'is_correct' => '0'
         ]);
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '3',
             'quiz_id' => '2',
             'question_id' => '6',
             'option_id' => '23',
             'is_correct' => '0'
         ]);
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '3',
             'quiz_id' => '2',
             'question_id' => '6',
@@ -201,28 +202,28 @@ class Quiz_question_submissionSeeder extends Seeder
             'is_correct' => '0'
         ]);
 
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '4',
             'quiz_id' => '3',
             'question_id' => '7',
             'option_id' => '25',
             'is_correct' => '1'
         ]);
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '4',
             'quiz_id' => '3',
             'question_id' => '7',
             'option_id' => '26',
             'is_correct' => '0'
         ]);
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '4',
             'quiz_id' => '3',
             'question_id' => '7',
             'option_id' => '27',
             'is_correct' => '0'
         ]);
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '4',
             'quiz_id' => '3',
             'question_id' => '7',
@@ -237,28 +238,28 @@ class Quiz_question_submissionSeeder extends Seeder
 
 
 
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '4',
             'quiz_id' => '3',
             'question_id' => '8',
             'option_id' => '29',
             'is_correct' => '1'
         ]);
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '4',
             'quiz_id' => '3',
             'question_id' => '8',
             'option_id' => '30',
             'is_correct' => '1'
         ]);
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '4',
             'quiz_id' => '3',
             'question_id' => '8',
             'option_id' => '31',
             'is_correct' => '1'
         ]);
-        Quiz_question_submissions::create([
+        QuizQuestionSubmissions::create([
             'user_id' => '4',
             'quiz_id' => '3',
             'question_id' => '8',

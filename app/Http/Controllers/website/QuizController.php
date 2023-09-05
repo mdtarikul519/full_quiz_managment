@@ -5,6 +5,7 @@ namespace App\Http\Controllers\website;
 use App\Http\Controllers\Controller;
 use App\Models\Quiz;
 use App\Models\QuizQuestions;
+use App\Models\QuizQuestionsOptions;
 use App\Models\QuizQuestionSubmissions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -69,15 +70,20 @@ class QuizController extends Controller
         //dd(request()->all());
         foreach (request()->submitions as $index => $submition) {
     
-               $question = $index;
+               
             foreach($submition as $ind => $value ){
                $option = $ind;
-
-            
+               $question = $index;
+            //   $is_correct = $option ::find();
+                $options = QuizQuestionsOptions::find($ind);
+                
+               //dd($options->toArray());
                $submit = new QuizQuestionSubmissions();
-
+               $submit->user_id = Auth::user()->id;
+               $submit->quiz_id = request()->quiz_id;
                $submit->question_id = $question;
                $submit->option_id = $option;
+               $submit->is_correct = $options->is_correct;
 
                $submit->save();
 
@@ -88,29 +94,15 @@ class QuizController extends Controller
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public function quiz_question_submit_answer($id, $question_id)
+    public function quiz_question_submit_answer($id)
     {
 
-        $correct_answer = QuizQuestionSubmissions::where('quiz_id', $id)->where('question_id', $question_id)->where('is_correct', 1)->count();
+        $correct_answer = QuizQuestionsOptions::where('question_id', $id)->where('is_correct', 1)->count();
 
-        $Notcorrect_answer = QuizQuestionSubmissions::with('quizCorrectAnswer')
-            ->where('quiz_id', $id)->where('is_correct', 0)->count();
-
+        $Notcorrect_answer = QuizQuestionsOptions::where('question_id', $id)->where('is_correct', 0)->count();
 
 
-        dd($correct_answer);
+
+       // dd($correct_answer,  $Notcorrect_answer);
     }
 }

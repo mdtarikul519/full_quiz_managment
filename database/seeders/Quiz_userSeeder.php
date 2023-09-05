@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Quiz_user;
+use App\Models\QuizUser;
 use Illuminate\Database\Seeder;
 
 class Quiz_userSeeder extends Seeder
@@ -14,38 +15,38 @@ class Quiz_userSeeder extends Seeder
      */
     public function run()
     {
-        Quiz_user::truncate();
-        Quiz_user::create([ 
+        QuizUser::truncate();
+        QuizUser::create([ 
             'user_id' => '2',
             'quiz_id' => '1',
             'mark' => '2',
         ]);
 
-        Quiz_user::create([ 
+        QuizUser::create([ 
             'user_id' => '2',
             'quiz_id' => '2',
             'mark' => '2',
         ]);
-        Quiz_user::create([ 
+        QuizUser::create([ 
             'user_id' => '6',
             'quiz_id' => '1',
             'mark' => '2',
         ]);
 
-        Quiz_user::create([ 
+        QuizUser::create([ 
             'user_id' => '3',
             'quiz_id' => '2',
             'mark' => '2',
         ]);
 
-        Quiz_user::create([ 
+        QuizUser::create([ 
             'user_id' => '3',
             'quiz_id' => '3',
             'mark' => '2',
         ]);
 
 
-        Quiz_user::create([ 
+        QuizUser::create([ 
             'user_id' => '4',
             'quiz_id' => '3',
             'mark' => '1',
