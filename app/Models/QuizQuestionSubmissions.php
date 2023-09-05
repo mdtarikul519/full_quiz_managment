@@ -18,7 +18,7 @@ class QuizQuestionSubmissions extends Model
 
     ];
 
-    // public function userQuestionSubmit(){
-    //     return $this->hasMany(User::class);
-    // }
+    public function quizCorrectAnswer(){
+        return $this->hasOne(QuizQuestionsOptions::class,'id', 'option_id');
+    }
 }

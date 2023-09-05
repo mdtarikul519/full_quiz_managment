@@ -28,47 +28,89 @@ class QuizController extends Controller
     }
 
 
-    public function quiz_question_submit(request $Request){
-         //dd(request()->all());
-        $data = new QuizQuestionSubmissions();
-foreach(request()->all() as $index => $submission) {
-    if($index == '_token' || $index == 'quiz_id') {
-        //dd($submission);
-    } else {
-        //dd($submission);
-        foreach($submission as $ind => $answer) {
+    // public function quiz_question_submit(request $Request)
+    // {
+    //     dd(request()->all());
+    //     $data = new QuizQuestionSubmissions();
+    //     foreach (request()->all() as $index => $submission) {
+    //         if ($index == '_token' || $index == 'quiz_id') {
+    //             //dd($submission);
+    //         } else {
+    //             //dd($submission);
+    //             foreach ($submission as $ind => $answer) {
 
-            //in_array(13, $answer);
-            //dd($answer);
-            //dd(in_array(1 ,array_keys($answer)));
+    //                 //in_array(13, $answer);
+    //                 //dd($answer);
+    //                 //dd(in_array(1 ,array_keys($answer)));
 
 
-            $question = QuizQuestions::find($ind);
-            //dd($question);
-            $options = $question->quizQuestionsOptions->pluck('id');
-            foreach ($options as $option) {
-                QuizQuestionSubmissions::create([
+    //                 $question = QuizQuestions::find($ind);
+    //                 //dd($question);
+    //                 $options = $question->quizQuestionsOptions->pluck('id');
+    //                 foreach ($options as $option) {
+    //                     QuizQuestionSubmissions::create([
 
-                 'user_id' => Auth::user()->id,
-                 'quiz_id' =>  $question->quiz_id,
-                 'question_id' =>  $ind,
-                 'option_id' => $option,
-                 'is_correct' => in_array($option, array_keys($answer)),
+    //                         'user_id' => Auth::user()->id,
+    //                         'quiz_id' =>  $question->quiz_id,
+    //                         'question_id' =>  $ind,
+    //                         'option_id' => $option,
+    //                         'is_correct' => in_array($option, array_keys($answer)),
 
-                ]);
+    //                     ]);
+    //                 }
+    //                 //dd();
+    //             }
+    //         };
+    //     }
+    // }
+
+    public function quiz_question_submit(request $Request)
+    {
+        //dd(request()->all());
+        foreach (request()->submitions as $index => $submition) {
+    
+               $question = $index;
+            foreach($submition as $ind => $value ){
+               $option = $ind;
+
+            
+               $submit = new QuizQuestionSubmissions();
+
+               $submit->question_id = $question;
+               $submit->option_id = $option;
+
+               $submit->save();
+
+
             }
-            //dd($answer);
+
         }
 
-    };
+    }
 
 
 
 
 
-}
-        
-       
 
+
+
+
+
+
+
+
+
+    public function quiz_question_submit_answer($id, $question_id)
+    {
+
+        $correct_answer = QuizQuestionSubmissions::where('quiz_id', $id)->where('question_id', $question_id)->where('is_correct', 1)->count();
+
+        $Notcorrect_answer = QuizQuestionSubmissions::with('quizCorrectAnswer')
+            ->where('quiz_id', $id)->where('is_correct', 0)->count();
+
+
+
+        dd($correct_answer);
     }
 }

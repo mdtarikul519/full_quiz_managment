@@ -11,7 +11,7 @@
                         <input type="text" hidden name="quiz_id" value="{{ $quizQuestion->quiz_id }}">
                         @foreach ($quizQuestion->quizQuestionsOptions as $options)
                          {{ $options->id }}
-                            <input type="checkbox" name="title[{{ $quizQuestion->id }}][{{ $options->id }}][]" value="{{ $options->title }}">
+                            <input type="checkbox" name="submitions[{{ $quizQuestion->id }}][{{ $options->id }}]" value="{{ $options->title }}">
                             <label for="vehicle1"> {{ $options->title }}</label><br>
                         @endforeach
                     @endforeach
