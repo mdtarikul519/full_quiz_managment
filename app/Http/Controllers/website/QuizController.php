@@ -7,6 +7,7 @@ use App\Models\Quiz;
 use App\Models\QuizQuestions;
 use App\Models\QuizQuestionsOptions;
 use App\Models\QuizQuestionSubmissions;
+use App\Models\QuizUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -68,31 +69,76 @@ class QuizController extends Controller
     public function quiz_question_submit(request $Request)
     {
         //dd(request()->all());
+        $data = new QuizUser();   
+        $data->user_id = Auth::user()->id;
+        $data->quiz_id = request()->quiz_id;
+        $data->save();
+
         foreach (request()->submitions as $index => $submition) {
-    
-               
-            foreach($submition as $ind => $value ){
-               $option = $ind;
-               $question = $index;
-            //   $is_correct = $option ::find();
+
+
+            foreach ($submition as $ind => $value) {
+                $option = $ind;
+                $question = $index;
+                //   $is_correct = $option ::find();
                 $options = QuizQuestionsOptions::find($ind);
-                
-               //dd($options->toArray());
-               $submit = new QuizQuestionSubmissions();
-               $submit->user_id = Auth::user()->id;
-               $submit->quiz_id = request()->quiz_id;
-               $submit->question_id = $question;
-               $submit->option_id = $option;
-               $submit->is_correct = $options->is_correct;
 
-               $submit->save();
+                //dd($options->toArray());
+                $submit = new QuizQuestionSubmissions();
+                $submit->user_id = Auth::user()->id;
+                $submit->quiz_id = request()->quiz_id;
+                $submit->question_id = $question;
+                $submit->option_id = $option;
+                $submit->is_correct = $options->is_correct;
 
-
+                $submit->save();
             }
-
         }
-
     }
+
+    public function quiz_question_mark($id)
+    {
+        $submittedAnswer = QuizQuestionSubmissions::where('quiz_id', $id)->get()->groupBy('question_id');
+
+        //dd(  $submittedAnswer->toArray());
+        $mark = 0;
+        foreach ($submittedAnswer as $index => $answer) {
+            //dd($index);
+
+            $option = QuizQuestionsOptions::where('question_id', $index)->where('is_correct', 1)->pluck('id')->toArray();
+            // dd($option);
+            //dd($answer->pluck('option_id')->toArray());
+            if ($answer->pluck('option_id')->toArray() == $option) {
+                $mark =  $mark += 1;   
+            }
+           
+        }
+        $quizMarkUpdate =  QuizUser::where('quiz_id', $id)->where('user_id', Auth::user()->id)->first();
+        $quizMarkUpdate->mark = $mark ;
+        $quizMarkUpdate->save();
+        //dd($quizMarkUpdate);   
+       // dd($mark);
+    }
+
+
+    // public function quiz_question_mark($id)
+    // {
+    //     $options = Quiz::where('id',$id)->with('quizSubmissionRelation')->first();
+
+    //     dd($options->quizSubmissionRelation->where('is_correct', 1)->count());
+    //     //  $options = Quiz::where('id',$id)->with('quiz_submission_relation', function($query){
+    //     //     $query->where('is_correct', 1);   
+    //     //  })->count();
+    //     //  dd('quizSubmissionRelation')->get();
+    //     // dd($options);
+    // }
+
+
+
+
+
+
+
 
     public function quiz_question_submit_answer($id)
     {
@@ -103,6 +149,6 @@ class QuizController extends Controller
 
 
 
-       // dd($correct_answer,  $Notcorrect_answer);
+        // dd($correct_answer,  $Notcorrect_answer);
     }
 }

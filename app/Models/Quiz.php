@@ -14,4 +14,10 @@ class Quiz extends Model
 
     }
 
+    public function quizSubmissionRelation()
+    {
+        return  $this->hasMany(QuizQuestionSubmissions::class);
+
+    }
+
 }

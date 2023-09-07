@@ -56,7 +56,7 @@ class QuestionController extends Controller
     public function edit($id)
     {
 
-        $editdata = Quiz_questions::find($id);
+        $editdata = QuizQuestions::find($id);
         $quiz = Quiz::get();
         return view('admin.question.edit', compact('editdata', 'quiz'));
     }
@@ -64,7 +64,7 @@ class QuestionController extends Controller
 
     public function update(Request $request, $id)
     {
-        $data = Quiz_questions::find($id);
+        $data = QuizQuestions::find($id);
 
         $data->quiz_id = $request->quiz_id;
         $data->title = $request->title;
@@ -90,7 +90,7 @@ class QuestionController extends Controller
 
     public function delete($id)
     {
-        Quiz_questions::where('id', $id)->delete();
+        QuizQuestions::where('id', $id)->delete();
         return redirect()->back();
     }
 }

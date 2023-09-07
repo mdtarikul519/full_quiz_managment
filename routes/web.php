@@ -60,6 +60,9 @@ Route::group(['prefix' => '', 'middleware' => ['istudent'], 'namespace' => 'webs
     Route::get('/quizs/question/{id}', 'QuizController@quiz_question')->name('quiz_question');
     Route::post('/quizs/question/submit', 'QuizController@quiz_question_submit')->name('quiz_question_submit');
     Route::get('/quizs/question/submit/answer/{id}', 'QuizController@quiz_question_submit_answer')->name('quiz_question_submit_answer');
+    Route::get('/quizs/question/submit/answer/{id}', 'QuizController@quiz_question_submit_answer')->name('quiz_question_submit_answer');
+    Route::get('/total/quizs/question/marks/{id}', 'QuizController@quiz_question_mark')->name('quiz_question_mark');
+
 
 
 });
