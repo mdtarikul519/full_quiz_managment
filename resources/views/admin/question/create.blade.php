@@ -20,8 +20,13 @@
                                  <input type="text" name="title" class="form-control">
                              </div>
                              <div class="form-group col-md-6">
-                                <label for="">Correct_answer</label>
-                                <input type="number" name="is_correct" class="form-control">
+                                <label for="">mark</label>
+                                <input type="number" name="mark" class="form-control">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="">Is_Multipal</label>
+                                <input type="text" name="is_multipol" class="form-control">
                             </div>
                           
                             

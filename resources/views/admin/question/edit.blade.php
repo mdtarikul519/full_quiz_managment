@@ -20,10 +20,18 @@
                                  <input type="text" value="{{ $editdata->title }}" name="title" class="form-control">
                              </div>
                              <div class="form-group col-md-6">
-                              <label for="">Is_correct</label>
-                              <input type="text" value="{{ $editdata->is_correct }}" name="is_correct" class="form-control">
+                              <label for="">Mark</label>
+                              <input type="text" value="{{ $editdata->mark }}" name="mark" class="form-control">
                           </div>
-    
+
+
+                          <div class="form-group col-md-6">
+                            <label for="">Is_multipal</label>
+                            <input type="text" value="{{ $editdata->is_multipol }}" name="is_multipol" class="form-control">
+                        </div>
+
+                        </div>
+
                               <button>update</button>
                         </form>
                     </div>

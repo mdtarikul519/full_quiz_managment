@@ -19,20 +19,26 @@ class Quiz_questionsSeeder extends Seeder
         QuizQuestions::create([
             'quiz_id' => '1',
             'title' => 'Who is the father of c programing?',
-            'mark' => '1'
+            'mark' => '1',
+            'is_multipol' => '0'
+
         ]);
         QuizQuestions::create([
 
             'quiz_id' => '1',
             'title' => 'Which of the following are unary operators in C?',
-            'mark' => '1'
+            'mark' => '1',
+            'is_multipol' => '1'
+
         ]);
 
         QuizQuestions::create([
 
             'quiz_id' => '1',
             'title' => 'The keyword used to transfer control from a function back to the calling function is.',
-            'mark' => '1'
+            'mark' => '1',
+            'is_multipol' => '0'
+
         ]);
 
 
@@ -44,19 +50,26 @@ class Quiz_questionsSeeder extends Seeder
 
             'quiz_id' => '2',
             'title' => 'Who is the father of php?',
-            'mark' => '1'
+            'mark' => '1',
+            'is_multipol' => '0'
+
+
         ]);
         QuizQuestions::create([
 
             'quiz_id' => '2',
             'title' => 'What are the popular frameworks in PHP ?',
-            'mark' => '1'
+            'mark' => '1',
+            'is_multipol' => '1'
+
         ]);
         QuizQuestions::create([
 
             'quiz_id' => '2',
             'title' => 'What are the different types of loop in PHP ',
-            'mark' => '1'
+            'mark' => '1',
+            'is_multipol' => '0'
+
         ]);
 
 
@@ -66,14 +79,18 @@ class Quiz_questionsSeeder extends Seeder
 
             'quiz_id' => '3',
             'title' => 'Who is the father of java programing?',
-            'mark' => '1'
+            'mark' => '1',
+            'is_multipol' => '0'
+
         ]);
 
         QuizQuestions::create([
 
             'quiz_id' => '3',
             'title' => 'what is DML Commands are',
-            'mark' => '1'
+            'mark' => '1',
+            'is_multipol' => '1'
+
         ]);
        
     }

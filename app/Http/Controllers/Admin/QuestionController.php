@@ -25,7 +25,9 @@ class QuestionController extends Controller
         // dd(request()->all());
         $data->quiz_id = $request->quiz_id;
         $data->title = $request->title;
-        $data->is_correct = $request->is_correct;
+        $data->mark = $request->mark;
+        $data->is_multipol = $request->is_multipol;
+
 
         // $data->answer = $request->answer;
 
@@ -68,7 +70,8 @@ class QuestionController extends Controller
 
         $data->quiz_id = $request->quiz_id;
         $data->title = $request->title;
-        $data->is_correct = $request->is_correct;
+        $data->mark = $request->mark;
+        $data->is_multipol = $request->is_multipol;
 
         // if ($request->multipal == "0") {
         //     $data->answer = $request->answer;

@@ -18,6 +18,7 @@ class CreateQuizQuestionsTable extends Migration
             $table->bigInteger('quiz_id')->nullable();
             $table->string('title',100)->nullable();
             $table->integer('mark')->nullable();
+            $table->string('is_multipol',100)->nullable();
             $table->timestamps();
         });
     }

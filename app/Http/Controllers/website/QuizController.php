@@ -69,10 +69,7 @@ class QuizController extends Controller
     public function quiz_question_submit(request $Request)
     {
         //dd(request()->all());
-        $data = new QuizUser();   
-        $data->user_id = Auth::user()->id;
-        $data->quiz_id = request()->quiz_id;
-        $data->save();
+
 
         foreach (request()->submitions as $index => $submition) {
 
@@ -94,47 +91,48 @@ class QuizController extends Controller
                 $submit->save();
             }
         }
-    }
-
-    public function quiz_question_mark($id)
-    {
-        $submittedAnswer = QuizQuestionSubmissions::where('quiz_id', $id)->get()->groupBy('question_id');
-
-        //dd(  $submittedAnswer->toArray());
+        $submittedAnswer = QuizQuestionSubmissions::where('quiz_id', request()->quiz_id)->get()->groupBy('question_id');
         $mark = 0;
         foreach ($submittedAnswer as $index => $answer) {
-            //dd($index);
-
             $option = QuizQuestionsOptions::where('question_id', $index)->where('is_correct', 1)->pluck('id')->toArray();
-            // dd($option);
+            //dd($option);
             //dd($answer->pluck('option_id')->toArray());
             if ($answer->pluck('option_id')->toArray() == $option) {
-                $mark =  $mark += 1;   
+                $mark =  $mark + 1;
             }
-           
         }
-        $quizMarkUpdate =  QuizUser::where('quiz_id', $id)->where('user_id', Auth::user()->id)->first();
-        $quizMarkUpdate->mark = $mark ;
-        $quizMarkUpdate->save();
-        //dd($quizMarkUpdate);   
-       // dd($mark);
+        //dd($mark);
+
+        $orderedMarks = QuizUser::where('quiz_id', request()->quiz_id)->orderBy('mark', 'desc')->get();
+
+foreach ($orderedMarks as $result) {
+    QuizUser::create([
+        'user_id' =>  Auth::user()->id,
+        'quiz_id' => request()->quiz_id,
+        'mark' => $result->$mark,
+    ]);
+}
+     
+        // $data = new QuizUser();
+        // $data->user_id = Auth::user()->id;
+        // $data->quiz_id = request()->quiz_id;
+        // $data->mark = $mark;
+        // $data->save();
+         
     }
 
-
-    // public function quiz_question_mark($id)
-    // {
-    //     $options = Quiz::where('id',$id)->with('quizSubmissionRelation')->first();
-
-    //     dd($options->quizSubmissionRelation->where('is_correct', 1)->count());
-    //     //  $options = Quiz::where('id',$id)->with('quiz_submission_relation', function($query){
-    //     //     $query->where('is_correct', 1);   
-    //     //  })->count();
-    //     //  dd('quizSubmissionRelation')->get();
-    //     // dd($options);
+    // public function quiz_question_mark($id){
+    //     $submittedAnswer = QuizQuestionSubmissions::where('quiz_id', $id)->get()->groupBy('question_id');
+    //       $mark = 0;
+    //     foreach($submittedAnswer as $index => $answer) {
+    //         $option = QuizQuestionsOptions::where('question_id', $index)->where('is_correct', 1)->pluck('id')->toArray();
+    //         //dd($option);
+    //         if ($answer->pluck('option_id')->toArray() == $option) {
+    //             $mark =  $mark + 1;
+    //         }
+    //     }
+    //     dd($mark);
     // }
-
-
-
 
 
 

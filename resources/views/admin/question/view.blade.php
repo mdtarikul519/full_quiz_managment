@@ -11,7 +11,8 @@
                                     <th>No</th>
                                     <th>quiz_name</th>
                                     <th>question_name</th>
-                                    <th>marke</th>
+                                    <th>mark</th>
+                                    <th>Is_Multipol</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -25,7 +26,8 @@
                                             @endif
                                         </td>
                                         <td>{{ $item->title }}</td>
-                                        <td>{{ $item->marke }}</td>
+                                        <td>{{ $item->mark }}</td>
+                                        <td>{{ $item->is_multipol }}</td>
                                         <td>
                                             <div class="table_action">
 
